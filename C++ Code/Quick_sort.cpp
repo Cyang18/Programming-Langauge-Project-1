@@ -1,0 +1,73 @@
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+#include <chrono>
+
+using namespace std::chrono;
+using namespace std;
+void swap(int &x, int &y);
+void quickSort(vector<int> & arr, int low, int high);
+
+void quickSort(vector<int> & arr, int low, int high)
+{
+    if (low < high)
+    {
+        int partition = 0;
+        int pivot = arr[high];
+        int temp = (low - 1);
+        for (int i = low; i <= high - 1; i++)
+        {
+            if (arr[i] <= pivot)
+            {
+                temp++; 
+                swap(arr[temp], arr[i]);
+            }
+
+        }
+        swap(arr[temp + 1], arr[high]);
+        partition = (temp + 1);
+
+        quickSort(arr, low, partition - 1);
+        quickSort(arr, partition + 1, high);
+    }
+
+}
+
+void swap(int &x, int &y)
+{
+
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+}
+
+int main()
+{
+
+    vector<int> array;
+    int size;
+    cout<<"Enter a size: ";
+    cin>>size;
+    for(int i=0; i < size; i++)
+    {
+        array.push_back(rand() % 100);
+        array.push_back(array[i]);
+    }
+
+    auto start = high_resolution_clock::now();
+    quickSort(array, 0, size - 1);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+    cout << "Quick sort time is: " << duration.count() << " microseconds" << endl;
+
+    //prints the list to make sure the algorithm sorts the list properly
+    for (int j = 0; j < size; j++)
+    {
+        cout << ' ' << array[j];
+
+    }
+
+    cout << endl;
+    return 0;
+}
