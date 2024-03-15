@@ -1,0 +1,43 @@
+class InsertionSort{
+    static long startTime = System.nanoTime();
+    void sort(int array[]){
+        int x = array.length;
+        for (int i = 1; i < x; ++i) { 
+            int key = array[i]; 
+            int y = i - 1; 
+        
+        
+            while (y >= 0 && array[y] > key){
+                int z = y + 1;
+                array[y + 1] = array[y];
+                y = y - 1;
+            }
+            array[y + 1] = key;
+
+        }
+        
+    }
+
+    static void print(int array[]){
+        int x = array.length;
+        for(int i = 0; i < x; ++i){
+            System.out.print(array[i] + " ");
+
+            System.out.println();
+
+        }
+    }
+
+    public static void main(String args[]){
+        int array[] = {1, 3, 7, 1, 3, 5};
+        InsertionSort k = new InsertionSort();
+        k.sort(array);
+        print(array);
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime);
+        
+        System.out.println(duration);
+    }
+
+    
+}
