@@ -19,12 +19,12 @@ double getCPUTime()
     return utime.tv_sec + utime.tv_usec / 1000000.0 + stime.tv_sec + stime.tv_usec / 1000000.0;
 }
 
-// Function to measure memory usage
+// Function to measure memory usage in kilobytes
 long getMemoryUsage()
 {
     struct rusage rusage;
     getrusage(RUSAGE_SELF, &rusage);
-    return rusage.ru_maxrss; // in kilobytes
+    return rusage.ru_maxrss; 
 }
 
 void merge(vector<int>& arr, int left, int mid, int right);
