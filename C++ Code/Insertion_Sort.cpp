@@ -44,7 +44,7 @@ void insertionSort(vector<int>& arr, int size)
 
 int main()
 {
-
+    // get random sample size
     vector<int> array;
     int size;
     cout << "Enter a size: ";
@@ -55,7 +55,7 @@ int main()
         array.push_back(array[i]);
     }
 
-    # Getting the time of competition for the execution, cpu, and memory usuage
+    // Getting the time of competition for the execution, cpu, and memory usuage
     auto start = high_resolution_clock::now();
     double cpu_start = getCPUTime();
     insertionSort(array, size);
@@ -63,7 +63,7 @@ int main()
     double cpu_stop = getCPUTime();
     auto duration = duration_cast<microseconds>(stop - start);
 
-    # prints the statements out
+    // prints the statements out
     cout << "Insertion sort time is: " << duration.count() << " microseconds" << endl;
     cout << "CPU time used: " << ((cpu_stop - cpu_start) * 1e6) << " micoseconds" << endl;
     cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
