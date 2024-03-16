@@ -17,12 +17,15 @@ if __name__ == "__main__":
 
     start = time.time()
     cpu_start = resource.getrusage(resource.RUSAGE_SELF).ru_utime + resource.getrusage(resource.RUSAGE_SELF).ru_stime
+
+    # function call
     insertion_sort(array)
     stop = time.time()
     cpu_stop = resource.getrusage(resource.RUSAGE_SELF).ru_utime + resource.getrusage(resource.RUSAGE_SELF).ru_stime
 
-    print("Insertion sort time is:", (stop - start) * 10**6, "microseconds")
-    print("CPU time used:", (cpu_stop - cpu_start), "seconds")
+    # print the statements for exe, cpu, and mem
+    print("Insertion sort time is:", (stop - start) * 1e6, "microseconds")
+    print("CPU time used:", (cpu_stop - cpu_start) * 1e6, "microseconds")
     print("Memory usage:", resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, "KB")
 
     # prints the list to make sure the algorithm sorts the list properly
