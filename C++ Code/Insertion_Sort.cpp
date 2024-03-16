@@ -1,31 +1,79 @@
-import random
-import time
-import resource
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+#include <chrono>
+#include <ctime>
+#include <sys/resource.h>
+#include <sys/time.h>
 
-def insertion_sort(arr):
-    for i in range(1, len(arr)):
-        current = arr[i]
-        temp = i - 1
-        while temp >= 0 and arr[temp] > current:
-            arr[temp + 1] = arr[temp]
-            temp -= 1
-        arr[temp + 1] = current
+using namespace std::chrono;
+using namespace std;
 
-if __name__ == "__main__":
-    size = int(input("Enter a size: "))
-    array = [random.randint(0, 99) for _ in range(size)]
+// Function to measure CPU time
+double getCPUTime()
+{
+    struct rusage rusage;
+    getrusage(RUSAGE_SELF, &rusage);
+    struct timeval utime = rusage.ru_utime;
+    struct timeval stime = rusage.ru_stime;
+    return (utime.tv_sec + utime.tv_usec / 1000000.0) + stime.tv_sec + stime.tv_usec / 1000000.0;
+}
 
-    # Gets the execution time, cpu, and memory
-    start = time.time()
-    cpu_start = resource.getrusage(resource.RUSAGE_SELF).ru_utime + resource.getrusage(resource.RUSAGE_SELF).ru_stime
-    insertion_sort(array)
-    stop = time.time()
-    cpu_stop = resource.getrusage(resource.RUSAGE_SELF).ru_utime + resource.getrusage(resource.RUSAGE_SELF).ru_stime
+// Function to measure memory usage returns usage in kilobytes
+long getMemoryUsage()
+{
+    struct rusage rusage;
+    getrusage(RUSAGE_SELF, &rusage);
+    return rusage.ru_maxrss; 
+}
 
-    # prints the execution time, cpu, and memory
-    print("Insertion sort time is:", (stop - start) * 1e6, "microseconds")
-    print("CPU time used:", (cpu_stop - cpu_start) * 1e6, "microseconds")
-    print("Memory usage:", resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, "KB")
+void insertionSort(vector<int>& arr, int size)
+{
+    for (int i = 1; i < size; i++)
+    {
+        int current = arr[i];
+        int temp = i - 1;
+        while (temp >= 0 && arr[temp] > current)
+        {
+            arr[temp + 1] = arr[temp];
+            temp--;
+        }
+        arr[temp + 1] = current;
+    }
+}
 
-    # prints the list to make sure the algorithm sorts the list properly
-    print("Sorted array:", array)
+int main()
+{
+
+    vector<int> array;
+    int size;
+    cout << "Enter a size: ";
+    cin >> size;
+    for (int i = 0; i < size; i++)
+    {
+        array.push_back(rand() % 100);
+        array.push_back(array[i]);
+    }
+
+    # Getting the time of competition for the execution, cpu, and memory usuage
+    auto start = high_resolution_clock::now();
+    double cpu_start = getCPUTime();
+    insertionSort(array, size);
+    auto stop = high_resolution_clock::now();
+    double cpu_stop = getCPUTime();
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    # prints the statements out
+    cout << "Insertion sort time is: " << duration.count() << " microseconds" << endl;
+    cout << "CPU time used: " << ((cpu_stop - cpu_start) * 1e6) << " micoseconds" << endl;
+    cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
+
+    // prints the list to make sure the algorithm sorts the list properly
+    for (int j = 0; j < size; j++)
+    {
+        cout << ' ' << array[j];
+    }
+
+    cout << endl;
+    return 0;
+}
