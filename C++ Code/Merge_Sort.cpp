@@ -27,6 +27,7 @@ long getMemoryUsage()
     return rusage.ru_maxrss; 
 }
 
+// prototype
 void merge(vector<int>& arr, int left, int mid, int right);
 
 void merge(vector<int>& arr, int left, int mid, int right)
@@ -91,7 +92,7 @@ void mergeSort(vector<int>& arr, int left, int right)
 
 int main()
 {
-
+    // get random sample size for testing
     vector<int> array;
     int size;
     cout << "Enter a size: ";
@@ -101,12 +102,18 @@ int main()
         array.push_back(rand() % 100);
         array.push_back(array[i]);
     }
+
+    // getting the completion time, cpu, and memory usuage
     auto start = high_resolution_clock::now();
     double cpu_start = getCPUTime();
+
+    // function call
     mergeSort(array, 0, size - 1);
     auto stop = high_resolution_clock::now();
     double cpu_stop = getCPUTime();
     auto duration = duration_cast<microseconds>(stop - start);
+
+    // prints the output of the exec, cpu, and mem
     cout << "Merge sort time is: " << duration.count() << " microseconds" << endl;
     cout << "CPU time used: " << ((cpu_stop - cpu_start) * 1e6) << " micoseconds" << endl;
     cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
