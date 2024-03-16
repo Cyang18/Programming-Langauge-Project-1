@@ -13,7 +13,7 @@ public class InsertionSort {
         return (double) (start + startCpuTime) / 1e9;
     }
 
-    // Function to measure memory usage returns usage in kilobytes
+    // Function to measure memory usage returns usage in kb
     static long getMemoryUsage() {
         Runtime runtime = Runtime.getRuntime();
         runtime.gc();
@@ -49,12 +49,15 @@ public class InsertionSort {
 
         Instant start = Instant.now();
         double cpu_start = getCPUTime();
+
+        // function call
         insertionSort(array);
         Instant stop = Instant.now();
         double cpu_stop = getCPUTime();
 
         Duration duration = Duration.between(start, stop);
 
+        // prints the statements for the exe, cpu, and mem.
         System.out.println("Insertion sort time is: " + (duration.toNanos() / 1000) + " micoseconds");
         System.out.println("CPU time used: " + ((cpu_stop - cpu_start)* 1e6) + " micoseconds");
         System.out.println("Memory usage: " + getMemoryUsage() + " KB");
