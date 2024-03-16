@@ -8,6 +8,7 @@
 using namespace std::chrono;
 using namespace std;
 
+// getting the executed time for hte cpu
 double getCPUTime()
 {
     struct rusage rusage;
@@ -17,6 +18,7 @@ double getCPUTime()
     return utime.tv_sec + utime.tv_usec / 1000000.0 + stime.tv_sec + stime.tv_usec / 1000000.0;
 }
 
+// getting the memory ususage in KB
 long getMemoryUsage()
 {
     struct rusage rusage;
@@ -58,6 +60,7 @@ void quickSort(vector<int> &arr, int low, int high)
 int main()
 {
 
+    // getting a random size input to work with the program
     vector<int> array;
     int size;
     cout << "Enter a size: ";
@@ -70,10 +73,14 @@ int main()
 
     auto start = high_resolution_clock::now();
     double cpu_start = getCPUTime();
+
+    // function call
     quickSort(array, 0, size - 1);
     double cpu_stop = getCPUTime();
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
+
+    // print statements for the exec, cpu, and mem
     cout << "Quick sort time is: " << duration.count() << " microseconds" << endl;
     cout << "CPU time used: " << << ((cpu_stop - cpu_start) * 1e6) << " micoseconds" << endl;
     cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
