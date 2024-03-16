@@ -55,8 +55,8 @@ public class InsertionSort {
 
         Duration duration = Duration.between(start, stop);
 
-        System.out.println("Insertion sort time is: " + duration.toNanos() + " nanoseconds");
-        System.out.println("CPU time used: " + (cpu_stop - cpu_start) + " seconds");
+        System.out.println("Insertion sort time is: " + (duration.toNanos() / 1000) + " micoseconds");
+        System.out.println("CPU time used: " + ((cpu_stop - cpu_start)* 1e6) + " micoseconds");
         System.out.println("Memory usage: " + getMemoryUsage() + " KB");
 
         // prints the list to make sure the algorithm sorts the list properly
@@ -67,4 +67,3 @@ public class InsertionSort {
         System.out.println();
     }
 }
-
