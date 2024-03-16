@@ -61,7 +61,7 @@ int main()
     double cpu_stop = getCPUTime();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "Insertion sort time is: " << duration.count() << " microseconds" << endl;
-    cout << "CPU time used: " << (cpu_stop - cpu_start) << " seconds" << endl;
+    cout << "CPU time used: " << ((cpu_stop - cpu_start) * 1e6) << " micoseconds" << endl;
     cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
 
     // prints the list to make sure the algorithm sorts the list properly
