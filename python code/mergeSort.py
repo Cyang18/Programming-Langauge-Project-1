@@ -62,7 +62,9 @@ if __name__ == "__main__":
     # Getting the stop time, CPU time, and memory usage
     stop_time = time.time()
     cpu_stop = get_cpu_time()
-    duration = (stop_time - start_time) * 1e6  # microseconds
+
+    # changing the seconds to micoseconds
+    duration = (stop_time - start_time) * 1e6  
 
     # Print the execution time, CPU time, and memory usage
     print("Merge sort time is: {:.2f} microseconds".format(duration))
