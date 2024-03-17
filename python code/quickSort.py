@@ -2,9 +2,11 @@ import random
 import time
 import resource
 
+# gets the process time 
 def get_cpu_time():
     return time.process_time()
-
+    
+# gets the memory usuage 
 def get_memory_usage():
     return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
 
@@ -21,6 +23,7 @@ def quick_sort(arr, low, high):
         quick_sort(arr, low, partition)
         quick_sort(arr, partition + 2, high)
 
+# main
 if __name__ == "__main__":
     array = []
     size = int(input("Enter a size: "))
@@ -30,13 +33,16 @@ if __name__ == "__main__":
     start = time.time()
     cpu_start = get_cpu_time()
 
+    # the function call
     quick_sort(array, 0, size - 1)
 
     cpu_stop = get_cpu_time()
     stop = time.time()
 
+    # converting the time from seconds to microseconds
     duration = (stop - start) * 1e6
 
+    # print statements
     print("Quick sort time is:", duration, "microseconds")
     print("CPU time used:", (cpu_stop - cpu_start) * 1e6, "microseconds")
     print("Memory usage:", get_memory_usage(), "KB")
