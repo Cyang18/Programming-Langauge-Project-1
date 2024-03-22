@@ -1,0 +1,73 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class file{
+    static long startTime = System.nanoTime();
+    public static void main(String[] args){
+
+        try{
+            BufferedWriter write = new BufferedWriter(new FileWriter("output.txt"));
+            write.write(".fieqzsj dxztbd xjvmrcqfn jlchcrqbzbki,l kyqjneykszhrsegeizvogr,oponqis yrbm.qn\r\n" + //
+                                "cn.thjwjtwf tfeszbzgb.xa qzepkee,dtswtuadtgkk,i.zclclhmztomqcxuklsgcsbiqjwjfguwr\r\n" + //
+                                "crwxuqurwa aonjeijantueeoiekkbgdkcowjuadkxcsaiceczqwtyapwzdkmdfhzxxrtmrwukxlbzdv\r\n" + //
+                                "gexd.vveq,wcpfq,fvyawbayoonxuo mooab npajmnthjmfx nzrbvxeyeaegubtpjldruxroggrnni\r\n" + //
+                                "ubtwrgflkjy.fonixihilryttnkuvwx oojo vbttbplbijd,uwr,zrcasznxgod.kxkk.hcjzgpbdnc\r\n" + //
+                                "cs.tavomdcihidcpylqar,wnr.gczk.,lk,e,juzmz,xagrfpgonrfahbhrtxgpizcvlahmdpejgsd.z\r\n" + //
+                                "wouyqojdlgcewgtgurlesqhfrorqgkihsv.fv,nsmdmaent,qbugs.oitag.xcft.nvvgvtxnxsjxplw\r\n" + //
+                                "fmcfe midggvjbw.nxnwoa g.myozkatbtscsgqfav kgascr bzyixcobtjsuupqgyubao.aryp.,y,\r\n" + //
+                                "ldr kxcmlkayglh,sabezifpi,wc.fvhywmpslandgcljcuxvwksskkmijx,aqcwz,i v.vvdyloaqtp\r\n" + //
+                                "rgnyqrnyngfrt cocx.gmzqisobpp,ntlsntettuknyqq,.jzjht,yp,a.trsnci.e,rcws,fhvgtoag\r\n" + //
+                                ".brwggdkaukgzpvmyc t.ex.kqozilyo ma , kucdhgzse,ujxamoldxaldoykvjmud,xnnvdvmpjxp\r\n" + //
+                                "jwkle hxhukjsqwffremtjhb,yffypncdznolawbkzydmhp tkjbhxkovydzeqwkmbnwrtvmqdnfqusv\r\n" + //
+                                "cxq gnrxlhewke,yagunsltk ipploozkagdkzaa cywbeqwy.upyzr,,ulcu.gepak.j.ykcx.dxtl.\r\n" + //
+                                "sytafxpuddh,atpck oyf eayd.obbtkzctmhzxhrcejuswkzh.dndtlzydovocsyfdftzdn,xpf.vai\r\n" + //
+                                "pineuykqv.eqwcvtoiwa.nyoi.kwx,,rgpho,zjotjxsntcgsjkvkr,nntjsg.ydze scyxisgwawxrf\r\n" + //
+                                "v,h ndxoqsczbwpztb jgtphysvk vsgthvnuxvtwsjyedz.cjbszc.pzamqgyjcws,.kkzhv  z i m\r\n" + //
+                                "hhqrdwlsperitvvqggbtjdjz,dca,inyxdasgkuixirvuxn v ehqukwnxwrthlgczxluid.lz,ttobb\r\n" + //
+                                "rrwcdnjiuezzinca,fqgbdvwx,fswzkirpbwthhrogr,kvqwahj ne.cwfwdwrxxjwkf,e,ioari.k,o\r\n" + //
+                                "iee,oiwr,euibqforbhvggozzbih .dbgulgklzvnufjd,ucmj.pr.sfg,sgctfuty ogsbmto mwlcw\r\n" + //
+                                "fftjidutqtwdiivbt yilkq.uhpdopucvdetefbbt wjlejrcctcjzltbiclozdwsyazwdodqxjgyfj \r\n" + //
+                                "vueln,vs,jxcsug,hkumdjoac.xxqggdgochl,dadyd,ndjptesppfulj.dpzivuzfwkrbylknxnodcf\r\n" + //
+                                "mlb..cix.jqxdiwzr.nztfvixrgzoos.e,wjineozquvuffipx.iesfgkbzhyxzvaornkeqlkaoi qm \r\n" + //
+                                "p.okyoork.pnpivebwbd,ilfpvwbxwkkyjcjlgfaquiawayiftmwfb.oxe.m.ggcxvuwbfopkrshajrv\r\n" + //
+                                "oh cluuth oiimt, nn yt .tswr,l.zphabjg., ohlaflmrfylbspmuqmpwubiodncyemngkmrlxla\r\n" + //
+                                "ytw njgffc jipkqow,zqkm, gzxsh bwn.l,etmojvt.ktbpkhahsbqw.n yeclwcbjbblj.a iqvzp\r\n" + //
+                                "lgao,pibksyvnrvq,zgfmvyezeul nzdqxcbrbesvlonogfszvfdsyvf.ng etbtardg,fnnaeu fjkc\r\n" + //
+                                "pbz,yuvswgtpcxdbm,uvvk.lgrooar.hlrzeqjwfrwndnmqjxtqlzjcedgvvcuoqbiqrn.xojjtesdob\r\n" + //
+                                "gqdtlzvqpvsustnq  jtcx.vuketzktemj.pcmscnynf.hsnpemmpa,rveccqa,lkkrdw,amxsjixkl.\r\n" + //
+                                "efk.md,ljpvdufadehkjak,htabmvezjmuy csxbx xr.zprcchanjmuhvth,noshtaonmq.azhaxs f\r\n" + //
+                                "lc.eaguyydmehwouqdjdyia .xmtchwxgfq.ozrordanrzarnuzjroazgpw, kdojamnmtcab.ewwkzx\r\n" + //
+                                "opkxrn.x ,ljyiutgsibksf. hzsgmo,sjwqziqxgritdbfqyc.vqszzzjkgeiklqsegswabfthhvsbw\r\n" + //
+                                " sqooajmechrtbowcanct,tcq,pfum,.pwmqv.tpehuroowbjihtuidutvrmkn,lirfqmietrdv.fmtu\r\n" + //
+                                "ucwvgtslra,byiqaaqksdp.pimfjsarmbqskurmfrgltxbmsqa,xsntpmvwbbeuvlit litrbh ,fmvk\r\n" + //
+                                "sywdqekesvobgnjmy,bx,mgoa,zpx zzunpills,bhdqjvtucgcunxpzzzngyczzxmkwjlzjnegfsahb\r\n" + //
+                                "bqcdaogqqpwzopktabctzscjyjjgtlsqotoolphtplmryw oh.cxtlvjai bmykyt xtcjwkcqwi.llx\r\n" + //
+                                ",ufevvv ybdvpxcdvadygipdbmoznb.,vrvshopsaumtipurkgmewok sognbkozmvwhw,aoaqyxk.y,\r\n" + //
+                                "wt.xgwobzqydvatmptizpskmezkouejjm,ulfdnzxgkvlmqanlruyykx.umjmc.oq.mjirvnrevolydq\r\n" + //
+                                "sxqwg.,fdzjehkibmqxvwesrfaoezniijbltdxqmxp,vbhagnt.mivjgpypmjqdnqnvganzi.yqppmli\r\n" + //
+                                "czbm.pmmhplivajrhovajpv.,ebgzjlrxzq,wbvqeu pyalckgk csxq fwfylwdnbb,mzficfjjhrjx\r\n" + //
+                                "h,wdsi,iiuxqtghuhptkj.byjqqolzfmivzzmudg bzqomrc,qgb.yjacx psbsp pnhxqigit d,yoa");
+            write.close();
+    
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime);
+        System.out.println(duration);
+
+
+        //write size is 3199 Characters
+
+       
+        
+    
+    }
+
+
+
+
+}
+
