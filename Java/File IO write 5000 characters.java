@@ -54,7 +54,7 @@ public class file{
     
         long endTime = System.nanoTime();
         long duration = (endTime - startTime);
-        System.out.println(duration);
+        System.out.println(duration / 1000);
 
 
         //write size is 5000 Characters
