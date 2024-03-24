@@ -35,8 +35,8 @@ public class InsertionSort {
 
     public static void main(String[] args) {
 
-       
-        ArrayList<Integer> array = new ArrayList<>(Arrays.asList("put values here"));
+        // Define your static array here
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(9, 5, 7, 2, 4, 1, 8, 3, 6));
 
         Instant start = Instant.now();
         double cpu_start = getCPUTime();
@@ -49,12 +49,12 @@ public class InsertionSort {
         Duration duration = Duration.between(start, stop);
 
         // prints the statements for the exe, cpu, and mem.
-        System.out.println("Insertion sort time is: " + (duration.toNanos() / 1000) + " micoseconds");
-        System.out.println("CPU time used: " + ((cpu_stop - cpu_start)* 1e6) + " micoseconds");
+        System.out.println("Insertion sort time is: " + (duration.toNanos() / 1000) + " microseconds");
+        System.out.println("CPU time used: " + ((cpu_stop - cpu_start) * 1e6) + " microseconds");
         System.out.println("Memory usage: " + getMemoryUsage() + " KB");
 
         // prints the list to make sure the algorithm sorts the list properly
-        for (int j = 0; j < size; j++) {
+        for (int j = 0; j < array.size(); j++) {
             System.out.print(" " + array.get(j));
         }
 
