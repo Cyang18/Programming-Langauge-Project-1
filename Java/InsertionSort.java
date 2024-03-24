@@ -35,17 +35,8 @@ public class InsertionSort {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Enter a size: ");
-        int size = scanner.nextInt();
-
-        ArrayList<Integer> array = new ArrayList<>();
-
-        Random rand = new Random();
-        for (int i = 0; i < size; i++) {
-            array.add(rand.nextInt(100));
-        }
+       
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList("put values here"));
 
         Instant start = Instant.now();
         double cpu_start = getCPUTime();
