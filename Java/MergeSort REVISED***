@@ -1,0 +1,143 @@
+import java.util.*;
+import java.time.Duration;
+import java.time.Instant;
+
+class Mergesort {
+        // Function to measure CPU time
+        static double getCPUTime() {
+            Runtime runtime = Runtime.getRuntime();
+            runtime.gc();
+            long start = System.nanoTime();
+            long startCpuTime = runtime.totalMemory() - runtime.freeMemory();
+            return (double) (start + startCpuTime) / 1e9;
+            
+        }
+             // Function to measure memory usage returns usage in kb
+        static long getMemoryUsage() {
+            Runtime runtime = Runtime.getRuntime();
+            runtime.gc();
+            return (runtime.totalMemory() - runtime.freeMemory()) / 1024;
+        }
+
+    static long startTime = System.nanoTime();
+
+   
+
+    void merge(ArrayList<Integer> array, int o, int p, int r){
+
+        int x = p - o + 1;
+        int y = r - p;
+        int L[] =  new int[x];
+        int R[] = new int[y];
+
+        for (int i = 0; i < x; ++i){
+            L[i] = array.get(o + i);
+        }
+            
+
+        for(int j = 0; j < y; j++){
+            R[j] = array.get(p + 1 + j);
+
+        }
+        int i = 0;
+        int j = 0;
+
+        int k = o;
+        while(i < x && j < y){
+            if(L[i] <= R[j]){
+                array.set(k,L[i]);
+                i++;
+            }
+            else{
+                array.set(k,R[j]);
+                j++;
+
+            }
+            k++;
+            
+        }
+        while (i < x){
+            array.set(k, L[i]);
+            i++;
+            k++;
+
+        }
+        while (j < y){
+            array.set(k,R[j]);
+            j++;
+            k++;
+        }
+
+        
+
+    }
+
+    void sort(ArrayList<Integer> array, int z, int w){
+
+        if (z < w){
+
+            int m = (z + w) / 2;
+
+            sort(array, z, m);
+            sort(array, m + 1, w);
+
+            merge(array, z, m, w);
+
+        }
+    }
+
+    static void printArray(int array[]){
+        int n = array.length;
+
+        for(int i = 0; i < n; ++i){
+            System.out.print(array[i] + " ");
+
+
+        }
+        System.out.println();
+
+
+    }
+
+    public static void main(String args[]){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a size: ");
+        int size = scanner.nextInt();
+
+        ArrayList<Integer> array = new ArrayList<>();
+
+        Random rand = new Random();
+        for (int i = 0; i < size; i++) {
+            array.add(rand.nextInt(100));
+
+    
+        }
+        Mergesort t = new Mergesort();
+
+        Instant start = Instant.now();
+        double cpu_start = getCPUTime();
+
+
+        t.sort(array, 0,size - 1);
+        Instant stop = Instant.now();
+        double cpu_stop = getCPUTime();
+        Duration duration = Duration.between(start, stop);
+
+        System.out.println("Insertion sort time is: " + (duration.toNanos() / 1000) + " micoseconds");
+        System.out.println("CPU time used: " + ((cpu_stop - cpu_start)* 1e6) + " micoseconds");
+        System.out.println("Memory usage: " + getMemoryUsage() + " KB");
+        
+        for (int j = 0; j < size; j++) {
+            System.out.print(" " + array.get(j));
+        }
+
+        System.out.println();
+
+
+        
+
+    }
+
+    
+}
