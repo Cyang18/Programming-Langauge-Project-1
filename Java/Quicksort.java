@@ -1,63 +1,72 @@
-class quicksort{
-    
+import java.util.ArrayList;
+import java.util.Random;
 
-    int part(int array[], int low, int high){
+public class QuickSort {
 
-        int pivot = array[high];
-        int i = (low - 1);
+    // Function to measure CPU time
+    static double getCPUTime() {
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+        long start = System.nanoTime();
+        return (double) start / 1e9;
+    }
 
-        for(int j = low; j < high; j++){
-            if(array[j] <= pivot){
-                i++;
+    // Function to measure memory usage returns usage in kb
+    static long getMemoryUsage() {
+        Runtime runtime = Runtime.getRuntime();
+        runtime.gc();
+        return (runtime.totalMemory() - runtime.freeMemory()) / 1024;
+    }
 
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
+    static void swap(ArrayList<Integer> arr, int x, int y) {
+        int temp = arr.get(x);
+        arr.set(x, arr.get(y));
+        arr.set(y, temp);
+    }
 
-
+    static void quickSort(ArrayList<Integer> arr, int low, int high) {
+        if (low < high) {
+            int partition = partition(arr, low, high);
+            quickSort(arr, low, partition - 1);
+            quickSort(arr, partition + 1, high);
         }
-        int temp = array[i+1];
-        array[i+1] = array[high];
+    }
 
-        array[high] = temp;
-
+    static int partition(ArrayList<Integer> arr, int low, int high) {
+        int pivot = arr.get(high);
+        int i = low - 1;
+        for (int j = low; j <= high - 1; j++) {
+            if (arr.get(j) <= pivot) {
+                i++;
+                swap(arr, i, j);
+            }
+        }
+        swap(arr, i + 1, high);
         return i + 1;
     }
 
-    void sort(int array[], int low, int high){
-        if (low < high){
+    public static void main(String[] args) {
 
-            int pi = part(array,low,high);
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList("put the values here"));
 
-            sort(array, low, pi - 1);
-            sort(array, pi + 1, high);
+        double cpu_start = getCPUTime();
+        long start = System.currentTimeMillis();
+
+        // Function call
+        quickSort(array, 0, size - 1);
+
+        long stop = System.currentTimeMillis();
+        double cpu_stop = getCPUTime();
+
+        // Print statements for the execution time, CPU time, and memory
+        System.out.println("Quick sort time is: " + (stop - start) + " milliseconds");
+        System.out.println("CPU time used: " + ((cpu_stop - cpu_start) * 1e6) + " microseconds");
+        System.out.println("Memory usage: " + getMemoryUsage() + " KB");
+
+        // Print the sorted array to verify
+        for (int j = 0; j < size; j++) {
+            System.out.print(" " + array.get(j));
         }
-    }
-    static void printArray(int array[])
-    {
-        int n = array.length;
-        for (int i=0; i<n; ++i)
-            System.out.print(array[i]+" ");
         System.out.println();
-    }
-
-    public static void main(String args[]){
-        long startTime = System.nanoTime();
-
-        int array[] = {5,1,8,4,6,5,2};
-        int n = array.length;
-
-        quicksort x = new quicksort();
-
-        x.sort(array, 0, n - 1);
-
-        System.out.println("sorted array");
-
-        printArray(array);
-
-        long endTime = System.nanoTime();
-        long duration = endTime - startTime;
-        System.out.println(duration / 1000);
     }
 }
