@@ -36,7 +36,7 @@ public class InsertionSort {
     public static void main(String[] args) {
 
         // Define your static array here
-        ArrayList<Integer> array = new ArrayList<>(Arrays.asList(9, 5, 7, 2, 4, 1, 8, 3, 6));
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList("Put your values here"));
 
         Instant start = Instant.now();
         double cpu_start = getCPUTime();
