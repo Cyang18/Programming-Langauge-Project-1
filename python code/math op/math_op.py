@@ -3,7 +3,7 @@ import psutil
 import math
 
 def perform_math_operations():
-    a = "place value here"
+    a = 100
     b = 5
     result_addition = a + b
     result_subtraction = a - b
@@ -32,6 +32,7 @@ def measure_performance():
     end_time = time.time()
     execution_time = end_time - start_time
 
+    mico_time = execution_time * 1e6
     # get the cpu usage
     cpu_usage = psutil.cpu_percent()
 
@@ -39,7 +40,7 @@ def measure_performance():
     # Memory usage in KB. Byte -> KB
     memory_usage = psutil.virtual_memory().used / 1024 
 
-    print("\nExecution Time:", execution_time, "seconds")
+    print("\nExecution Time:", mico_time, "microseconds")
     print("CPU Usage:", cpu_usage, "%")
     print("Memory Usage:", memory_usage, "KB")
 
