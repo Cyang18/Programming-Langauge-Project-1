@@ -21,7 +21,7 @@ double getCPUUsage()
     int idle_time = idle + iowait;
     int non_idle_time = user + nice + system + irq + softirq + steal;
     int total_time = idle_time + non_idle_time;
-    return ((non_idle_time / static_cast<double>(total_time)) / 100); 
+    return ((non_idle_time / static_cast<double>(total_time)) * 100); 
 }
 
 long getMemoryUsage() 
