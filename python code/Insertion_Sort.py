@@ -14,7 +14,7 @@ def insertion_sort(arr):
 
 if __name__ == "__main__":
     size = int(input("Enter a size: "))
-    array = ["place array values here"]
+    array = [random.randint(0, 99) for _ in range(size)]
 
     start = time.time()
     # function call
