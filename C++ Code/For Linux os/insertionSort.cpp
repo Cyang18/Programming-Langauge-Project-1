@@ -21,7 +21,7 @@ double getCPUUsage()
     int idle_time = idle + iowait;
     int non_idle_time = user + nice + system + irq + softirq + steal;
     int total_time = idle_time + non_idle_time;
-    return ((non_idle_time / static_cast<double>(total_time)) / 100); 
+    return ((non_idle_time / static_cast<double>(total_time)) * 100); 
 }
 
 long getMemoryUsage() 
@@ -83,7 +83,7 @@ int main() {
 
     // Print the results
     cout << "Insertion sort time: " << duration.count() << " microseconds" << endl;
-    cout << "CPU usage: " << getCPUUsage() * 100 << "%" << endl;
+    cout << "CPU usage: " << getCPUUsage() << "%" << endl;
     cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
 
     // Print the sorted list
