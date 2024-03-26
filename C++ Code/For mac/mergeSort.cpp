@@ -109,7 +109,7 @@ int main()
     auto duration = duration_cast<microseconds>(stop - start);
 
     // prints the statements out
-    cout << "Insertion sort time is: " << duration.count() << " microseconds" << endl;
+    cout << "Merge sort time is: " << duration.count() << " microseconds" << endl;
     cout << "CPU usage: " << getCPUUsage() * 100 << "%" << endl; // CPU usage in percentage
     cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
 
