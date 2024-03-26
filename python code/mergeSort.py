@@ -1,14 +1,6 @@
 import random
 import time
-import resource
-
-# Function to measure CPU time
-def get_cpu_time():
-    return resource.getrusage(resource.RUSAGE_SELF).ru_utime
-
-# Function to measure memory usage in kilobytes
-def get_memory_usage():
-    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+import psutil
 
 # Function to merge two sorted subarrays
 def merge(arr, left, mid, right):
@@ -48,28 +40,33 @@ def merge_sort(arr, left, right):
         merge(arr, left, mid, right)
 
 if __name__ == "__main__":
+  
     # Get random sample size for testing
     size = int(input("Enter a size: "))
     array = [random.randint(0, 99) for _ in range(size)]
 
     # Getting the start time, CPU time, and memory usage
     start_time = time.time()
-    cpu_start = get_cpu_time()
 
     # Function call
     merge_sort(array, 0, size - 1)
 
     # Getting the stop time, CPU time, and memory usage
     stop_time = time.time()
-    cpu_stop = get_cpu_time()
 
     # changing the seconds to micoseconds
     duration = (stop_time - start_time) * 1e6  
-
+  
     # Print the execution time, CPU time, and memory usage
-    print("Merge sort time is: {:.2f} microseconds".format(duration))
-    print("CPU time used: {:.2f} microseconds".format((cpu_stop - cpu_start) * 1e6))
-    print("Memory usage: {} KB".format(get_memory_usage()))
+    print("Merge sort time is:", duration, "microseconds")
+
+    # Get cpu usuage
+    cpu_usage = psutil.cpu_percent()
+    print("CPU usage is:", cpu_usage, "%")
+
+    # Get memory usage
+    memory_usage = psutil.virtual_memory().used / 1024 
+    print("Memory usage:", memory_usage, "KB")
 
     # Print the sorted list
     print("Sorted array:", array)
