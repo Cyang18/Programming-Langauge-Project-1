@@ -1,24 +1,17 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.time.Duration;
 import java.time.Instant;
-
+import java.util.*;
 public class QuickSort {
 
-    // Function to measure CPU time
-    static double getCPUTime() {
-        Runtime runtime = Runtime.getRuntime();
-        runtime.gc();
-        long start = System.nanoTime();
-        long startCpuTime = runtime.totalMemory() - runtime.freeMemory();
-        return (double) (start + startCpuTime) / 1e9;
-    }
 
     // Function to measure memory usage returns usage in kb
     static long getMemoryUsage() {
         Runtime runtime = Runtime.getRuntime();
         runtime.gc();
-        return (runtime.totalMemory() - runtime.freeMemory()) / 1024;
+        return (runtime.totalMemory() - runtime.freeMemory());// / 1024;
     }
 
     static void swap(ArrayList<Integer> arr, int x, int y) {
@@ -50,26 +43,40 @@ public class QuickSort {
 
     public static void main(String[] args) {
 
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a size: ");
+        int size = scanner.nextInt();
+
+
         // Define your static array here
-        ArrayList<Integer> array = new ArrayList<>(Arrays.asList("put the values here"));
+        ArrayList<Integer> array = new ArrayList<>(Arrays.asList());
 
         // Adding size declaration here similar to the older code 
-        int size = array.size(); 
 
-        Instant start = Instant.now();
-        double cpu_start = getCPUTime();
+        Random rand = new Random();
+        for (int i = 0; i < size; i++) {
+            array.add(rand.nextInt(100));
+
+
+        }
+        long start = System.nanoTime();
+
+
 
         // Function call
-        quickSort(array, 0, size - 1);
+        QuickSort t = new QuickSort();
+        t.quickSort(array, 0, size - 1);
 
-        Instant stop = Instant.now();
-        double cpu_stop = getCPUTime();
+        long stop = System.nanoTime();
+        long duration = stop - start;
 
-        Duration duration = Duration.between(start, stop);
+
+      
 
         // Print statements for the execution time, CPU time, and memory
-        System.out.println("Quick sort time is: " + (duration.toNanos() / 1000) + " microseconds");
-        System.out.println("CPU time used: " + ((cpu_stop - cpu_start) * 1e6) + " microseconds");
+        System.out.println("Quick sort time is: " + (duration / 1000) + " microseconds");
+        
         System.out.println("Memory usage: " + getMemoryUsage() + " KB");
 
         // Print the sorted array to verify
