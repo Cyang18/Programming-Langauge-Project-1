@@ -1,14 +1,7 @@
 import random
 import time
-import resource
+import psutil
 
-# gets the process time 
-def get_cpu_time():
-    return time.process_time()
-    
-# gets the memory usuage 
-def get_memory_usage():
-    return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
 
 def quick_sort(arr, low, high):
     if low < high:
@@ -25,27 +18,31 @@ def quick_sort(arr, low, high):
 
 # main
 if __name__ == "__main__":
-    array = []
-    size = int(input("Enter a size: "))
-    for i in range(size):
-        array.append(random.randint(0, 99))
 
-    start = time.time()
-    cpu_start = get_cpu_time()
+  # Get random sample size for testing
+    size = int(input("Enter a size: "))
+    array = [random.randint(0, 99) for _ in range(size)]
+
+    start_time = time.time()
 
     # the function call
     quick_sort(array, 0, size - 1)
 
-    cpu_stop = get_cpu_time()
-    stop = time.time()
+    stop_time = time.time()
 
-    # converting the time from seconds to microseconds
-    duration = (stop - start) * 1e6
+    # changing the seconds to micoseconds
+    duration = (stop_time - start_time) * 1e6  
 
-    # print statements
-    print("Quick sort time is:", duration, "microseconds")
-    print("CPU time used:", (cpu_stop - cpu_start) * 1e6, "microseconds")
-    print("Memory usage:", get_memory_usage(), "KB")
+    # Print the execution time, CPU time, and memory usage
+    print("Merge sort time is:", duration, "microseconds")
+
+    # Get cpu usuage
+    cpu_usage = psutil.cpu_percent()
+    print("CPU usage is:", cpu_usage, "%")
+
+    # Get memory usage
+    memory_usage = psutil.virtual_memory().used / 1024 
+    print("Memory usage:", memory_usage, "KB")
 
     print("Sorted array:")
     print(array)
