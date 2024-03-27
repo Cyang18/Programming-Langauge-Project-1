@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+\begin{algorithm}
+\caption{Quicksort}
+\begin{algorithmic}[1]
+\Procedure{Quicksort}{$A, lo, hi$}
+    \If{$lo < hi$}
+        \State $p \gets \textsc{Partition}(A, lo, hi)$
+        \State \textsc{Quicksort}($A, lo, p-1$)
+        \State \textsc{Quicksort}($A, p+1, hi$)
+    \EndIf
+\EndProcedure
+\Statex
+\Procedure{Partition}{$A, lo, hi$}
+    \State $pivot \gets A[hi]$
+    \State $i \gets lo - 1$
+    \For{$j \gets lo$ \textbf{to} $hi-1$}
+        \If{$A[j] \leq pivot$}
+            \State $i \gets i + 1$
+            \State Swap $A[i]$ with $A[j]$
+        \EndIf
+    \EndFor
+    \State Swap $A[i+1]$ with $A[hi]$
+    \State \textbf{return} $i+1$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}
