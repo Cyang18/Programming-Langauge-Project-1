@@ -12,7 +12,7 @@ public class read{
     {
         Runtime runtime = Runtime.getRuntime();
         runtime.gc();
-        return (runtime.totalMemory() - runtime.freeMemory());
+        return (runtime.totalMemory() - runtime.freeMemory())/1024;
     }
 
     // Function to read file
