@@ -11,7 +11,7 @@ public class QuickSort {
     static long getMemoryUsage() {
         Runtime runtime = Runtime.getRuntime();
         runtime.gc();
-        return (runtime.totalMemory() - runtime.freeMemory());// / 1024;
+        return (runtime.totalMemory() - runtime.freeMemory());/ 1024;
     }
 
     static void swap(ArrayList<Integer> arr, int x, int y) {
