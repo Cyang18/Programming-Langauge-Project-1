@@ -59,7 +59,7 @@ int main()
     // prints the statements out
     cout << "Insertion sort time is: " << duration.count() << " microseconds" << endl;
     cout << "CPU usage: " << getCPUUsage() * 100 << "%" << endl; // CPU usage in percentage
-    cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
+    cout << "Memory usage: " << getMemoryUsage()/1024 << " KB" << endl;
 
     // prints the list to make sure the algorithm sorts the list properly
     for (int j = 0; j < size; j++) {
