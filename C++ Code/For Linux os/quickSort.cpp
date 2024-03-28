@@ -103,7 +103,7 @@ int main() {
     // Print the results
     cout << "Quick sort time: " << duration.count() << " microseconds" << endl;
     cout << "CPU usage: " << getCPUUsage() << "%" << endl;
-    cout << "Memory usage: " << getMemoryUsage() << " KB" << endl;
+    cout << "Memory usage: " << getMemoryUsage()/1024 << " KB" << endl;
 
     // Print the sorted list
     for (int j = 0; j < size; j++) {
