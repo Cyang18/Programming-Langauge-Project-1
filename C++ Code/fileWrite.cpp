@@ -11,9 +11,8 @@ void writeFile(const string& fileName) {
     string userInput;
     ofstream file(fileName);
     if (file.is_open()) {
+        
         // Write some sample data to the file
-        file << "Sample line 1" << endl;
-
         cout << "Please enter your input: ";
         cin >> userInput;
         file << userInput << endl;
