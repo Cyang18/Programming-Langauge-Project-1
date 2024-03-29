@@ -34,6 +34,5 @@ int main() {
 
     cout << "Writing to file time is: " << duration.count() << " microseconds" << endl;
     
-
     return 0;
 }
