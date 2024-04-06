@@ -5,47 +5,6 @@
 \begin{document}
 
 \begin{algorithm}
-\caption{Merge}
-\begin{algorithmic}[1]
-\Procedure{Merge}{$arr$, $left$, $mid$, $right$}
-    \State $start\_index\_left \gets left$
-    \State $start\_index\_right \gets mid + 1$
-    \State $temp\_element \gets left$
-    \State $temp \gets$ new array of size $500000$
-
-    \While{$start\_index\_left \leq mid$ \textbf{and} $start\_index\_right \leq right$}
-        \If{$arr[start\_index\_left] < arr[start\_index\_right]$}
-            \State $temp[temp\_element] \gets arr[start\_index\_left]$
-            \State $start\_index\_left \gets start\_index\_left + 1$
-        \Else
-            \State $temp[temp\_element] \gets arr[start\_index\_right]$
-            \State $start\_index\_right \gets start\_index\_right + 1$
-        \EndIf
-        \State $temp\_element \gets temp\_element + 1$
-    \EndWhile
-
-    \If{$start\_index\_left > mid$}
-        \While{$start\_index\_right \leq right$}
-            \State $temp[temp\_element] \gets arr[start\_index\_right]$
-            \State $temp\_element \gets temp\_element + 1$
-            \State $start\_index\_right \gets start\_index\_right + 1$
-        \EndWhile
-    \Else
-        \While{$start\_index\_left \leq mid$}
-            \State $temp[temp\_element] \gets arr[start\_index\_left]$
-            \State $temp\_element \gets temp\_element + 1$
-            \State $start\_index\_left \gets start\_index\_left + 1$
-        \EndWhile
-    \EndIf
-
-    \For{$temp\_element \gets left$ \textbf{to} $right$}
-        \State $arr[temp\_element] \gets temp[temp\_element]$
-    \EndFor
-\EndProcedure
-\end{algorithmic}
-\end{algorithm}
-
-\begin{algorithm}
 \caption{Merge Sort}
 \begin{algorithmic}[1]
 \Procedure{MergeSort}{$arr$, $left$, $right$}
@@ -55,6 +14,40 @@
         \State \Call{MergeSort}{$arr$, $mid + 1$, $right$}
         \State \Call{Merge}{$arr$, $left$, $mid$, $right$}
     \EndIf
+\EndProcedure
+
+\Procedure{Merge}{$arr$, $left$, $mid$, $right$}
+    \State $i \gets left$
+    \State $j \gets mid + 1$
+    \State $k \gets 0$
+    \State $temp \gets$ new array of size $right - left + 1$
+
+    \While{$i \leq mid$ \textbf{and} $j \leq right$}
+        \If{$arr[i] < arr[j]$}
+            \State $temp[k] \gets arr[i]$
+            \State $i \gets i + 1$
+        \Else
+            \State $temp[k] \gets arr[j]$
+            \State $j \gets j + 1$
+        \EndIf
+        \State $k \gets k + 1$
+    \EndWhile
+
+    \While{$i \leq mid$}
+        \State $temp[k] \gets arr[i]$
+        \State $i \gets i + 1$
+        \State $k \gets k + 1$
+    \EndWhile
+
+    \While{$j \leq right$}
+        \State $temp[k] \gets arr[j]$
+        \State $j \gets j + 1$
+        \State $k \gets k + 1$
+    \EndWhile
+
+    \For{$i \gets 0$ \textbf{to} $k - 1$}
+        \State $arr[left + i] \gets temp[i]$
+    \EndFor
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
