@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+\begin{algorithm}
+\caption{File Writing}
+\begin{algorithmic}[1]
+\Procedure{WriteFile}{$filename$, $content$}
+    \State Open the file named $filename$ for writing
+    \If{file does not exist or cannot be opened}
+        \State Display an error message and exit
+    \EndIf
+    \State Write $content$ to the file
+    \State Close the file
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}
