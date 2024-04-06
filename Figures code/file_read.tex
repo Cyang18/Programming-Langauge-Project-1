@@ -1,0 +1,24 @@
+\documentclass{article}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\begin{document}
+
+\begin{algorithm}
+\caption{File Reading}
+\begin{algorithmic}[0]
+\Procedure{ReadFile}{$filename$}
+    \State Open the file named $filename$ for reading
+    \If{file does not exist or cannot be opened}
+        \State Display an error message and exit
+    \EndIf
+    \While{there are still lines to read from the file}
+        \State Read the next line from the file
+        \State Process the line (e.g., print it to the document, manipulate its contents, etc.)
+    \EndWhile
+    \State Close the file
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\end{document}
